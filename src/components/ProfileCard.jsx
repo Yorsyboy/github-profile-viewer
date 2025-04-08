@@ -17,7 +17,7 @@ export default function ProfileCard({ profile }) {
         <div className="flex-1 w-full">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-4">
             <div>
-              <h1 className="text-2xl font-bold">
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-50">
                 {profile.name || profile.login}
               </h1>
               <p className="text-gray-600">@{profile.login}</p>

@@ -30,7 +30,7 @@ export default function SearchBar({ onSearch, history = [] }) {
               onFocus={() => history.length > 0 && setShowHistory(true)}
               onBlur={() => setTimeout(() => setShowHistory(false), 200)}
               placeholder="Enter GitHub username"
-              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700 bg-white dark:bg-gray-800 dark:text-white"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-700 bg-white dark:bg-gray-800 text-black dark:text-white dark:focus:ring-green-500 transition duration-200"
             />
 
             {showHistory && history.length > 0 && (
@@ -56,7 +56,7 @@ export default function SearchBar({ onSearch, history = [] }) {
                             d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                           />
                         </svg>
-                        <span className="dark:text-white">{item}</span>
+                        <span className="text-gray-900 dark:text-gray-300">{item}</span>
                       </div>
                     </li>
                   ))}
