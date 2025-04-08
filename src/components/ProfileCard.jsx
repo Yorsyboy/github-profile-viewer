@@ -26,7 +26,7 @@ export default function ProfileCard({ profile }) {
               href={profile.html_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 py-2 bg-github-dark text-white dark:text-gray-50 rounded-lg transition"
+              className="inline-flex items-center px-4 py-2 text-gray-700 dark:text-gray-50 rounded-lg transition"
             >
               <svg
                 className="w-5 h-5 mr-2"
@@ -83,7 +83,7 @@ export default function ProfileCard({ profile }) {
 
             {profile.blog && (
               <a
-                href={profile.html_url}
+                href={profile.blog}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center text-gray-700 dark:text-gray-400"
@@ -102,7 +102,7 @@ export default function ProfileCard({ profile }) {
                     d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
                   />
                 </svg>
-                Github Link
+                Portfolio / Blog
               </a>
             )}
           </div>
