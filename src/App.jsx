@@ -12,7 +12,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { darkMode } = useTheme();
-  const {history, addToHistory} = useSearchHistory();
+  const { history, addToHistory } = useSearchHistory();
 
   const fetchProfile = async (username) => {
     setLoading(true);
@@ -52,16 +52,15 @@ export default function App() {
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-center items-center gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-center mb-2">
-              GitHub Profile Viewer
+            <h1 className=" flex items-center gap-2 text-3xl font-bold text-center mb-2">
+              GitHub Profile Viewer <ThemeToggle />
             </h1>
             <p className="text-center mb-8">
               For recruiters to quickly review developer profiles
             </p>
           </div>
-          <ThemeToggle />
         </div>
-        <SearchBar onSearch={fetchProfile} history={history}/>
+        <SearchBar onSearch={fetchProfile} history={history} />
 
         {loading && (
           <div className="text-center py-12">
