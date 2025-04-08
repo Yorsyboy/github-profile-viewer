@@ -1,3 +1,4 @@
+import { HeartIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 
 export default function RepoList({ repos }) {
@@ -43,7 +44,7 @@ export default function RepoList({ repos }) {
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden p-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
-        <h2 className="text-xl font-bold">Repositories</h2>
+        <h2 className="text-xl font-bold text-gray-500 dark:text-gray-50">Repositories</h2>
 
         <div className="flex flex-wrap gap-3">
           <div className="flex items-center">
@@ -54,7 +55,7 @@ export default function RepoList({ repos }) {
               id="sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="border border-gray-300 rounded px-2 py-1 text-sm"
+              className="border border-gray-300 rounded px-2 py-1 text-sm text-gray-500 dark:text-gray-50"
             >
               <option value="stars">Stars</option>
               <option value="name">Name</option>
@@ -70,7 +71,7 @@ export default function RepoList({ repos }) {
               id="limit"
               value={limit}
               onChange={(e) => setLimit(Number(e.target.value))}
-              className="border border-gray-300 rounded px-2 py-1 text-sm"
+              className="border border-gray-300 rounded px-2 py-1 text-sm text-gray-500 dark:text-gray-50"
             >
               <option value={5}>5</option>
               <option value={10}>10</option>
@@ -93,7 +94,7 @@ export default function RepoList({ repos }) {
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg font-semibold text-github-accent hover:underline truncate block"
+                  className="text-lg font-semibold text-gray-500 dark:text-gray-50 hover:underline truncate block"
                   title={repo.name}
                 >
                   {repo.name}
@@ -105,19 +106,8 @@ export default function RepoList({ repos }) {
                 )}
               </div>
               <div className="flex-shrink-0 flex items-center gap-1 px-2 py-1 bg-gray-50 rounded text-sm">
-                <svg
-                  className="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span>{repo.stargazers_count}</span>
+                <HeartIcon className="w-4 h-4 text-red-500" />
+                <span className="text-gray-500 dark:text-gray-50">{repo.stargazers_count}</span>
               </div>
             </div>
 
