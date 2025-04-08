@@ -4,6 +4,7 @@ import ProfileCard from "./components/ProfileCard";
 import RepoList from "./components/RepoList";
 import { useTheme } from "./context/ThemeContext";
 import ThemeToggle from "./components/Toggle";
+import { useSearchHistory } from "./context/SearchContext";
 
 export default function App() {
   const [profile, setProfile] = useState(null);
@@ -11,6 +12,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { darkMode } = useTheme();
+  const {history, addToHistory} = useSearchHistory();
 
   const fetchProfile = async (username) => {
     setLoading(true);
@@ -31,6 +33,7 @@ export default function App() {
 
       setProfile(profileData);
       setRepos(reposData);
+      addToHistory(username);
     } catch (err) {
       setError(err.message);
       setProfile(null);
@@ -58,7 +61,7 @@ export default function App() {
           </div>
           <ThemeToggle />
         </div>
-        <SearchBar onSearch={fetchProfile} />
+        <SearchBar onSearch={fetchProfile} history={history}/>
 
         {loading && (
           <div className="text-center py-12">
@@ -72,7 +75,7 @@ export default function App() {
           </div>
         )}
 
-        {/* {profile && <ProfileCard profile={profile} />} */}
+        {profile && <ProfileCard profile={profile} />}
         {repos.length > 0 && <RepoList repos={repos} />}
       </div>
     </div>
