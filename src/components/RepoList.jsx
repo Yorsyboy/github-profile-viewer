@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function RepoList({ repos }) {
   const [sortBy, setSortBy] = useState("stars");
-  const [limit, setLimit] = useState(5); 
+  const [limit, setLimit] = useState(5);
 
   if (!repos || repos.length === 0) return null;
 
@@ -22,7 +22,7 @@ export default function RepoList({ repos }) {
   // Limit displayed repositories
   const displayedRepos = sortedRepos.slice(0, limit);
 
-  // Language color 
+  // Language color
   const languageColors = {
     JavaScript: "bg-yellow-400",
     TypeScript: "bg-blue-600",
@@ -42,20 +42,25 @@ export default function RepoList({ repos }) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden p-6">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden p-6">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-3">
-        <h2 className="text-xl font-bold text-gray-500 dark:text-gray-50">Repositories</h2>
+        <h2 className="text-xl font-bold text-gray-700 dark:text-gray-200">
+          Repositories
+        </h2>
 
         <div className="flex flex-wrap gap-3">
           <div className="flex items-center">
-            <label htmlFor="sort" className="mr-2 text-sm text-gray-600">
+            <label
+              htmlFor="sort"
+              className="mr-2 text-sm text-gray-600 dark:text-gray-300"
+            >
               Sort by:
             </label>
             <select
               id="sort"
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="border border-gray-300 rounded px-2 py-1 text-sm text-gray-500 dark:text-gray-50"
+              className="border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700"
             >
               <option value="stars">Stars</option>
               <option value="name">Name</option>
@@ -64,14 +69,17 @@ export default function RepoList({ repos }) {
           </div>
 
           <div className="flex items-center">
-            <label htmlFor="limit" className="mr-2 text-sm text-gray-600">
+            <label
+              htmlFor="limit"
+              className="mr-2 text-sm text-gray-600 dark:text-gray-300"
+            >
               Show:
             </label>
             <select
               id="limit"
               value={limit}
               onChange={(e) => setLimit(Number(e.target.value))}
-              className="border border-gray-300 rounded px-2 py-1 text-sm text-gray-500 dark:text-gray-50"
+              className="border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-700"
             >
               <option value={5}>5</option>
               <option value={10}>10</option>
@@ -86,7 +94,7 @@ export default function RepoList({ repos }) {
         {displayedRepos.map((repo) => (
           <div
             key={repo.id}
-            className="border-b border-gray-100 pb-4 last:border-0"
+            className="border-b border-gray-200 dark:border-gray-700 pb-4 last:border-0"
           >
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
@@ -94,24 +102,26 @@ export default function RepoList({ repos }) {
                   href={repo.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-lg font-semibold text-gray-500 dark:text-gray-50 hover:underline truncate block"
+                  className="text-lg font-semibold text-gray-700 dark:text-gray-200 hover:underline truncate block"
                   title={repo.name}
                 >
                   {repo.name}
                 </a>
                 {repo.description && (
-                  <p className="text-gray-600 my-1 line-clamp-2">
+                  <p className="text-gray-600 dark:text-gray-400 my-1 line-clamp-2">
                     {repo.description}
                   </p>
                 )}
               </div>
-              <div className="flex-shrink-0 flex items-center gap-1 px-2 py-1 bg-gray-50 rounded text-sm">
+              <div className="flex-shrink-0 flex items-center gap-1 px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-sm">
                 <HeartIcon className="w-4 h-4 text-red-500" />
-                <span className="text-gray-500 dark:text-gray-50">{repo.stargazers_count}</span>
+                <span className="text-gray-700 dark:text-gray-200">
+                  {repo.stargazers_count}
+                </span>
               </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-gray-600 dark:text-gray-400">
               {repo.language && (
                 <div className="flex items-center">
                   <span

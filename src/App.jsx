@@ -31,6 +31,7 @@ export default function App() {
       const profileData = await profileRes.json();
       const reposData = await reposRes.json();
 
+      console.log("Profile Data:", profileData);
       setProfile(profileData);
       setRepos(reposData);
       addToHistory(username);
@@ -52,7 +53,7 @@ export default function App() {
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-center items-center gap-4">
           <div>
-            <h1 className=" flex items-center gap-2 text-3xl font-bold text-center mb-2">
+            <h1 className="flex items-center gap-2 text-3xl font-bold text-center mb-2">
               GitHub Profile Viewer <ThemeToggle />
             </h1>
             <p className="text-center mb-8">
@@ -64,12 +65,22 @@ export default function App() {
 
         {loading && (
           <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-github-accent"></div>
+            <div
+              className={`inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 ${
+                darkMode ? "border-gray-100" : "border-gray-900"
+              }`}
+            ></div>
           </div>
         )}
 
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+          <div
+            className={`px-4 py-3 rounded mb-6 ${
+              darkMode
+                ? "bg-red-900 border border-red-700 text-red-300"
+                : "bg-red-100 border border-red-400 text-red-700"
+            }`}
+          >
             {error} - Please check the username and try again
           </div>
         )}
